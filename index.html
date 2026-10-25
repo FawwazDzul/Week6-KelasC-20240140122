@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Etalase perangkat belajar - Chatbot Akademik</title>
+    <meta name="description" content="Etalase perangkat belajar mahasiswa. Data produk diambil dari DummyJSON dengan Fetch API.">
+    <link rel="stylesheet" href="css/index.css">
+    <script src="js/index.js" defer></script>
+</head>
+<body>
+
+    <header class="site-header">
+        <div class="wrap">
+            <a class="brand" href="index.html">Chatbot Akademik</a>
+            <nav class="nav" aria-label="Navigasi utama">
+                <a href="index.html" aria-current="page">Etalase</a>
+                <a href="form.html">Caption</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="wrap">
+        <section class="page-head">
+            <h1>Etalase perangkat belajar</h1>
+            <p class="lead">
+                Ponsel, laptop, dan tablet yang bisa dipakai mahasiswa untuk membuka chatbot informasi akademik.
+                Data produk dimuat langsung dari DummyJSON.
+            </p>
+        </section>
+
+        <section aria-label="Katalog produk">
+            <div class="toolbar" role="search">
+                <div class="field">
+                    <label for="cari">Cari nama produk</label>
+                    <input id="cari" type="search" placeholder="Contoh: iPhone" autocomplete="off">
+                </div>
+                <div class="field">
+                    <label for="kategori">Kategori</label>
+                    <select id="kategori">
+                        <option value="">Semua kategori</option>
+                    </select>
+                </div>
+            </div>
+
+            <p id="jumlah" class="count" aria-live="polite"></p>
+            <div id="status" class="status" hidden></div>
+            <noscript><p class="status status-error">Etalase membutuhkan JavaScript. Aktifkan JavaScript di browser lalu muat ulang halaman.</p></noscript>
+
+            <ul id="daftar-produk" class="product-grid"></ul>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="wrap">
+            <p>Harga dalam dolar AS (USD) sesuai data DummyJSON. Tugas Praktikum 6 - Pengembangan Aplikasi Web.</p>
+        </div>
+    </footer>
+
+</body>
+</html>

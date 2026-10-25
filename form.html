@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generator caption produk - Chatbot Akademik</title>
+    <meta name="description" content="Buat caption produk untuk media sosial: isi nama dan harga, pilih gaya, lalu salin hasilnya.">
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/form.css">
+    <script src="js/form.js" defer></script>
+</head>
+<body>
+
+    <header class="site-header">
+        <div class="wrap">
+            <a class="brand" href="index.html">Chatbot Akademik</a>
+            <nav class="nav" aria-label="Navigasi utama">
+                <a href="index.html">Etalase</a>
+                <a href="form.html" aria-current="page">Caption</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="wrap">
+        <section class="page-head">
+            <h1>Generator caption produk</h1>
+            <p class="lead">
+                Isi nama produk dan harga, pilih gaya bahasa, lalu salin caption siap pakai untuk media sosial.
+            </p>
+        </section>
+
+        <div class="form-layout">
+            <form id="form-caption" class="form-card" novalidate>
+                <div class="field">
+                    <label for="nama">Nama produk</label>
+                    <input id="nama" name="nama" type="text" maxlength="100" autocomplete="off"
+                           placeholder="Contoh: Laptop belajar 14 inci"
+                           aria-describedby="bantuan-nama err-nama">
+                    <p class="hint" id="bantuan-nama">3 sampai 60 karakter dan harus mengandung huruf.</p>
+                    <p class="error" id="err-nama"></p>
+                </div>
+
+                <div class="field">
+                    <label for="harga">Harga (Rupiah)</label>
+                    <input id="harga" name="harga" type="text" inputmode="numeric" autocomplete="off"
+                           placeholder="Contoh: 15000"
+                           aria-describedby="bantuan-harga err-harga">
+                    <p class="hint" id="bantuan-harga">Angka bulat dari Rp 1.000 sampai Rp 100.000.000. Boleh ditulis 15000 atau 15.000.</p>
+                    <p class="error" id="err-harga"></p>
+                </div>
+
+                <div class="field">
+                    <label for="template">Gaya caption</label>
+                    <select id="template" name="template">
+                        <option value="promo">Promo</option>
+                        <option value="santai">Santai</option>
+                        <option value="formal">Formal</option>
+                    </select>
+                </div>
+
+                <div class="form-actions">
+                    <button class="btn" type="submit">Buat caption</button>
+                    <button class="btn btn-outline" type="reset">Kosongkan</button>
+                </div>
+            </form>
+
+            <section class="chat" aria-labelledby="judul-hasil" aria-live="polite">
+                <p class="chat-title" id="judul-hasil">Hasil caption</p>
+
+                <p id="kosong" class="kosong">
+                    Caption akan muncul di sini. Isi nama dan harga produk, lalu klik Buat caption.
+                </p>
+
+                <div id="hasil" class="hasil" hidden>
+                    <p class="bubble bubble-user" id="ringkasan"></p>
+                    <p class="bubble bubble-bot" id="caption"></p>
+                    <div class="hasil-aksi">
+                        <button class="btn btn-outline" type="button" id="btn-salin">Salin caption</button>
+                        <span id="status-salin" class="salin-status"></span>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <div class="wrap">
+            <p>Tugas Praktikum 6 - Pengembangan Aplikasi Web | Program Studi Teknologi Informasi</p>
+        </div>
+    </footer>
+
+</body>
+</html>

@@ -1,0 +1,264 @@
+/* ==========================================================
+   index.css - style utama, dipakai index.html dan form.html
+   Isi: 1) Variabel  2) Reset  3) Base  4) Header + nav
+        5) Judul halaman  6) Tombol dan field  7) Etalase
+        8) Footer  9) Media query
+   Palet mengikuti homepage kelompok 6 (navy, teal, kuning).
+   ========================================================== */
+
+/* 1. VARIABEL */
+:root {
+  --ink: #12264a;
+  --ink-soft: #46557a;
+  --paper: #f3f6fc;
+  --white: #ffffff;
+  --teal: #0b8f7f;
+  --teal-dark: #076d61;
+  --sun: #ffc247;
+  --sun-ink: #3b2a00;
+  --line: #d6def0;
+  --danger: #b3261e;
+
+  --font: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+  --radius: 14px;
+  --width: 1120px;
+}
+
+/* 2. RESET */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+ul { list-style: none; }
+img { display: block; max-width: 100%; height: auto; }
+[hidden] { display: none !important; }
+
+/* 3. BASE */
+body {
+  font-family: var(--font);
+  font-size: 1rem;
+  line-height: 1.65;
+  color: var(--ink);
+  background: var(--paper);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+main { flex: 1; }
+.wrap {
+  width: min(100% - 2rem, var(--width));
+  margin-inline: auto;
+}
+:focus-visible {
+  outline: 3px solid var(--teal-dark);
+  outline-offset: 3px;
+}
+
+/* 4. HEADER + NAVIGASI */
+.site-header {
+  background: var(--ink);
+  color: var(--white);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+.site-header :focus-visible { outline-color: var(--sun); }
+.site-header .wrap {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding-block: 0.8rem;
+}
+.brand {
+  font-weight: 700;
+  font-size: 1.1rem;
+  text-decoration: none;
+  color: inherit;
+}
+.nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem 1.25rem;
+}
+.nav a {
+  text-decoration: none;
+  padding: 0.35rem 0;
+  border-bottom: 2px solid transparent;
+  color: #d9e2f7;
+}
+.nav a:hover,
+.nav a[aria-current="page"] {
+  color: var(--white);
+  border-color: var(--sun);
+}
+
+/* 5. JUDUL HALAMAN */
+.page-head { padding-block: 3rem 1.5rem; }
+.page-head h1 {
+  font-size: clamp(1.9rem, 4.5vw, 2.8rem);
+  line-height: 1.15;
+  margin-bottom: 0.6rem;
+}
+.lead {
+  color: var(--ink-soft);
+  max-width: 60ch;
+}
+
+/* 6. TOMBOL DAN FIELD */
+.btn {
+  display: inline-block;
+  font: inherit;
+  font-weight: 600;
+  padding: 0.75rem 1.4rem;
+  border-radius: 999px;
+  border: 2px solid var(--teal-dark);
+  background: var(--teal-dark);
+  color: var(--white);
+  cursor: pointer;
+  text-decoration: none;
+}
+.btn:hover { background: var(--ink); border-color: var(--ink); }
+.btn-outline { background: transparent; color: var(--teal-dark); }
+.btn-outline:hover { background: var(--white); color: var(--ink); border-color: var(--ink); }
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+.field label { font-weight: 600; }
+input,
+select {
+  font: inherit;
+  color: inherit;
+  background: var(--white);
+  border: 2px solid var(--line);
+  border-radius: 10px;
+  padding: 0.65rem 0.8rem;
+  min-height: 2.75rem;
+  width: 100%;
+}
+input:hover,
+select:hover { border-color: var(--ink-soft); }
+input:focus-visible,
+select:focus-visible {
+  outline-offset: 1px;
+  border-color: var(--teal-dark);
+}
+
+/* 7. ETALASE */
+.toolbar {
+  display: grid;
+  grid-template-columns: minmax(0, 2fr) minmax(0, 1fr);
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+.count {
+  color: var(--ink-soft);
+  font-size: 0.95rem;
+  margin-bottom: 1rem;
+  min-height: 1.65em;
+}
+
+/* Kotak status: loading, error, hasil kosong */
+.status {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.9rem;
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-left: 5px solid var(--teal);
+  border-radius: var(--radius);
+  padding: 1rem 1.25rem;
+  margin-bottom: 1.5rem;
+}
+.status-error { border-left-color: var(--danger); }
+.status-kosong { border-left-color: var(--sun); }
+.spinner {
+  width: 1.25rem;
+  height: 1.25rem;
+  border: 3px solid var(--line);
+  border-top-color: var(--teal-dark);
+  border-radius: 50%;
+  animation: putar 0.8s linear infinite;
+}
+@keyframes putar { to { transform: rotate(360deg); } }
+@media (prefers-reduced-motion: reduce) {
+  .spinner { animation: none; }
+}
+
+/* Grid produk */
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 1.25rem;
+  padding-bottom: 4rem;
+}
+.product-card {
+  display: flex;
+  flex-direction: column;
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+.product-card img {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: contain;
+  background: var(--paper);
+}
+.gambar-gagal { visibility: hidden; }
+.product-body {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  padding: 1rem 1.1rem 1.1rem;
+  flex: 1;
+}
+.product-meta { color: var(--ink-soft); font-size: 0.875rem; }
+.product-name { font-size: 1rem; line-height: 1.35; }
+.product-stock {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  font-size: 0.9rem;
+  color: var(--ink-soft);
+}
+.badge-stok {
+  background: var(--sun);
+  color: var(--sun-ink);
+  font-weight: 600;
+  font-size: 0.8rem;
+  padding: 0.1rem 0.6rem;
+  border-radius: 999px;
+}
+.product-price {
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin-top: auto;
+  padding-top: 0.4rem;
+}
+.product-link { color: var(--teal-dark); font-weight: 600; }
+
+/* 8. FOOTER */
+.site-footer {
+  background: var(--ink);
+  color: #c5d0ea;
+  text-align: center;
+  padding-block: 1.5rem;
+  font-size: 0.9rem;
+}
+
+/* 9. MEDIA QUERY */
+@media (max-width: 700px) {
+  .toolbar { grid-template-columns: 1fr; }
+  .site-header .wrap { flex-direction: column; align-items: flex-start; }
+  .page-head { padding-block: 2rem 1rem; }
+}
